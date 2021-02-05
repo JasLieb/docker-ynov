@@ -18,11 +18,12 @@ A project developped during Docker classes at Ynov Campus Toulouse
 - Start postgres container with port 5432
 - Start second postgres container with port 5433
 - Create a table into the second postgres database and dump the db
-
 - [Optionaly work] Encapsulate previous containers into a docker-compose .yml file
+- Create own image with following command : `docker build --build-arg ENV=production -t pwa-ynov:1.0.0 .`
 
 ### Elements added 
 
 - `dump.sql` second postgres database generated file
 - [Optionaly work] `docker-compose.yml` docker compose file
 - [Optionaly work] `db.env` postgres databases environnement files
+- `Dockerile` with `.dockerignore` files
