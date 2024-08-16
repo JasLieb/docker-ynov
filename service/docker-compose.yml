@@ -1,0 +1,8 @@
+version: '3'
+services: 
+  index: 
+    image: containous/whoami:latest
+    ports: 
+      - 80:80
+    deploy:
+      replicas: 3

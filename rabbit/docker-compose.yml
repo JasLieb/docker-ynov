@@ -1,0 +1,35 @@
+version: "3.3"
+services:
+  rabbit: 
+    image: rabbitmq
+    hostname: "rabbit"
+    networks: 
+      - rabbit-network
+  
+  sender:
+    build: 
+      context: ./amqp-sender
+      dockerfile: Dockerfile
+    networks: 
+      - rabbit-network
+    environment: 
+      - AMQP_HOST=rabbit
+    depends_on: 
+      - rabbit
+    restart: always
+
+  receiver:
+    build: 
+      context: ./amqp-receiver
+      dockerfile: Dockerfile
+    networks: 
+      - rabbit-network
+    environment: 
+      - AMQP_HOST=rabbit
+    depends_on: 
+      - rabbit
+    restart: always
+
+networks: 
+  rabbit-network:
+    driver: bridge

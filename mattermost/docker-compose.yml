@@ -1,0 +1,25 @@
+version: '3'
+services: 
+  db:
+    image: postgres:latest
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: example
+      POSTGRES_USER: example
+      POSTGRES_DB: example_db
+    ports:
+      - 5432:5432
+    networks:
+      - matternetwork
+  mattermost:
+    image: mattermost/mattermost-prod-app
+    environment:
+      DB_HOST: db
+      DB_PORT_NUMBER: 5432
+      MM_DBNAME: example_db
+      MM_USERNAME: example
+      MM_PASSWORD: example
+    networks:
+      - matternetwork
+networks:
+  matternetwork:
